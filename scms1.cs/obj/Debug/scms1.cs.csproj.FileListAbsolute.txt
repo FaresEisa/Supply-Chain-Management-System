@@ -1,0 +1,7 @@
+C:\Users\carlo\Desktop\VS repos\scms1.cs\obj\Debug\scms1.cs.csproj.AssemblyReference.cache
+C:\Users\carlo\Desktop\VS repos\scms1.cs\obj\Debug\scms1.cs.csproj.CoreCompileInputs.cache
+C:\Users\carlo\Desktop\VS repos\scms1.cs\bin\Debug\scms1.cs.exe.config
+C:\Users\carlo\Desktop\VS repos\scms1.cs\bin\Debug\scms1.cs.exe
+C:\Users\carlo\Desktop\VS repos\scms1.cs\bin\Debug\scms1.cs.pdb
+C:\Users\carlo\Desktop\VS repos\scms1.cs\obj\Debug\scms1.cs.exe
+C:\Users\carlo\Desktop\VS repos\scms1.cs\obj\Debug\scms1.cs.pdb

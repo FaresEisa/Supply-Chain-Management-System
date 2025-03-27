@@ -6,4 +6,6 @@ migration
 
 sql queries
 
+rebuild
+
 run program

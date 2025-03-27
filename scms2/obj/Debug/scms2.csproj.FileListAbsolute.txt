@@ -1,7 +1,0 @@
-C:\Users\carlo\Desktop\VS repos\scms2\obj\Debug\scms2.csproj.AssemblyReference.cache
-C:\Users\carlo\Desktop\VS repos\scms2\obj\Debug\scms2.csproj.CoreCompileInputs.cache
-C:\Users\carlo\Desktop\VS repos\scms2\bin\Debug\scms2.exe.config
-C:\Users\carlo\Desktop\VS repos\scms2\bin\Debug\scms2.exe
-C:\Users\carlo\Desktop\VS repos\scms2\bin\Debug\scms2.pdb
-C:\Users\carlo\Desktop\VS repos\scms2\obj\Debug\scms2.exe
-C:\Users\carlo\Desktop\VS repos\scms2\obj\Debug\scms2.pdb

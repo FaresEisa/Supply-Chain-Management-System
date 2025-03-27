@@ -1,11 +1,13 @@
-Build
+Build in vs
 
-install missing packages
+install missing packages in vs powershell
 
-migration
+migration in vs powershell
 
-sql queries
+run sql queries in ssms
 
-rebuild
+rebuild in vs
 
-run program
+run program in vs
+
+open browser to listening port

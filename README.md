@@ -1,15 +1,36 @@
-Open in vs and change connection string in appsettings.json (change just server name)
+Instructions
 
-Build in vs
+throughout the step 5 make sure you build/rebuild to make sure the code compiles before every command
 
-install missing packages in vs powershell
+1)
+Install sql 2022,
+ install ssms 2022,
+  connect to sql,
+   open ssms select trust and windows authenticator and click connect
 
-migration in vs powershell
+2)
+Open b1.sln with VS
 
-run the 3 sql queries to insert data in ssms
+3)
+open file appsettings.json and change the server name 
+"Sever=ROBOLOCO;" 
+with your SQL server name 
+"Sever=  your server name here  ;"
 
-rebuild in vs
+4)
+Build-Rebuild now and throughout next step
 
-run program in vs
+5)
+Make sure in VS Powershell you are in the directory with the .csproj file.
+Run in VS PowerShell:
+dotnet restore
+-AND-
+dotnet tool install --global dotnet-ef
+-AND-
+dotnet ef migrations add InitialCreate
+-AND-
+dotnet ef database update
 
-open browser to listening port
+
+6)
+Run

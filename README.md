@@ -31,6 +31,11 @@ dotnet ef migrations add InitialCreate
 -AND-
 dotnet ef database update
 
-
 6)
+Go ssms and run the 3 queries to insert data, in order 
+category 
+subcategory
+items
+
+7)
 Run

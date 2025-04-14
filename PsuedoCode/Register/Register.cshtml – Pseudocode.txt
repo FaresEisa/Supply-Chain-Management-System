@@ -1,0 +1,35 @@
+Register.cshtml – Pseudocode
+
+Purpose:
+User registration form that captures role, name, email, and password.
+Includes client-side password match validation and AJAX form submission.
+
+Form Structure:
+	-Form ID: registerForm
+	-Method: POST
+	-Uses asp-page-handler="OnPost"
+	-enctype="multipart/form-data"
+
+Inputs:
+	-Role dropdown (owner, client, logistic)
+	-Name (text)
+	-Email (email)
+	-Password (password)
+	-Confirm Password (password)
+	-Submit button: Register
+Error display container: #errorMessages
+
+JavaScript Functions:
+registerForm.submit(): 
+	- Prevents default form submission 
+	- Retrieves password and confirmPassword 
+
+If they don’t match: 
+	- Shows error message 
+	- Cancels submission 
+
+Otherwise: 
+	- Serializes form data 
+	- Sends it via AJAX POST to /Register 
+	- On success: redirects to /Login 
+	- On failure: shows error in #errorMessages

@@ -1,0 +1,18 @@
+Index.cshtml – Pseudocode
+
+Homepage of the web application
+
+
+Set the page directive
+- @page marks this as a Razor Page
+- @model is set to IndexModel
+
+Set the page title to "Home page"
+
+
+Main Content Section
+- Center the content using a div with class "text-center"
+- Display a large welcome heading using <h1> with class "display-4"
+- Show a paragraph with a link to official ASP.NET Core documentation
+    - Link text: "building Web apps with ASP.NET Core"
+    - URL: https://learn.microsoft.com/aspnet/core

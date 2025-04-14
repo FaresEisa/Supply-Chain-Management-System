@@ -1,0 +1,30 @@
+User Login and Role-Based Redirection:
+Source: Login.cshtml.cs
+
+Function LoginUser(email, password):
+    user ← Find user where Email equals email
+
+    If user is null:
+        Return "Invalid login"
+
+    If password is empty:
+        Return "Password required"
+
+    If user.Password is null:
+        Return "User password missing"
+
+    result ← VerifyHashedPassword(user.Password, password)
+
+    If result is invalid:
+        Return "Invalid login"
+
+    Save user.Email, user.Role, user.Name in session
+
+    If user.Role is "owner":
+        Redirect to Owner Dashboard
+    Else if user.Role is "client":
+        Redirect to Client Dashboard
+    Else if user.Role is "logistic":
+        Redirect to Logistic Dashboard
+    Else:
+        Redirect to Home

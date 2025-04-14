@@ -1,0 +1,9 @@
+Client-Side Quantity Check
+Source: Client.cshtml
+
+Function toggleButtons():
+    quantity ← Get quantity input
+    If quantity > available stock:
+        Disable buy button
+    Else:
+        Enable buy button

@@ -1,0 +1,103 @@
+client.cshtml – PSEUDOCODE
+
+Page Title:
+- Set the title to "Client Page"
+
+Header Section:
+- Display a welcoming heading: "Welcome to the Client Page!"
+- Provide a clickable link labeled "Show Listings"
+    - When clicked, toggles visibility of the user's listings panel
+    - Link text should update based on visibility state
+
+Notification Messages:
+- If a success message exists in TempData:
+    - Display it in a green success alert
+- If an error message exists in TempData:
+    - Display it in a red error alert
+- Automatically fade out the message after a few seconds
+
+Main Layout:
+- Use a responsive 3-column layout with Bootstrap grid
+
+Left Panel – Category Navigation:
+- Add a search input to filter the category list
+    - On key press, filter the categories in real-time
+- Render all categories from Model.Categories as a vertical list
+    - Each category should be a clickable link
+    - On click, send a request to load subcategories for that category
+
+Middle Panel – Subcategories:
+- Display this panel only if Model.Subcategories is not empty
+- Render a vertical list of subcategories
+    - Each subcategory should be a clickable link
+    - On click, send a request to load related items
+
+Right Panel – Items and User Listings:
+- Divide this panel into two smaller sections side-by-side
+
+  Item Panel:
+  - Show this panel only if there are items in Model.Items
+  - For each item:
+      - Display the item name and price
+      - Show stock availability in color (green if in stock, red if not)
+      - Provide a form to sell the item:
+          - Includes quantity input
+          - Submit button triggers an AJAX POST request
+      - Include a "Buy" button (client-side only for now)
+
+  User Listings Panel:
+  - Initially hidden
+  - Toggled using the "Show Listings" link
+  - Render a list of the user's item listings
+      - Show item name, quantity, and price
+      - If there are no listings, display a fallback message
+
+  Notification Overlay:
+  - Initially hidden
+  - Contains a title and a message
+  - Includes a close button
+  - Appears when triggered with a custom message
+
+JavaScript Functions:
+
+filterCategories():
+- Gets the text from the category search input
+- Filters the visible list items based on input
+
+loadSubcategories(categoryId):
+- Sends an AJAX request to the server for subcategories of a selected category
+- Inserts the returned HTML into the subcategory panel
+- Makes sure the subcategory panel is visible
+
+loadItems(subcategoryId):
+- Sends an AJAX request to the server for items under the selected subcategory
+- Updates the item panel with the received HTML
+- Ensures the item panel is visible
+
+toggleListings():
+- Checks the visibility state of the user listings panel
+- Toggles between "Show Listings" and "Hide Listings"
+- Shows or hides the panel accordingly
+
+sellItem(event, form):
+- Prevents the default form submission behavior
+- Sends form data via a POST request using fetch
+- On success, reloads the page to reflect updated data
+- On error, shows a simple alert message
+
+showNotification(title, message):
+- Updates the overlay's title and message
+- Makes the overlay visible
+
+closeOverlay():
+- Hides the overlay from view
+
+On DOMContentLoaded:
+- Checks if a notification message is present
+- If so:
+    - Shows it briefly
+    - Automatically fades it out after 3 seconds
+    - Fully hides it after a short delay
+
+Styles:
+- Include a reference to client.css for page-specific styling

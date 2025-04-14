@@ -1,0 +1,59 @@
+Owner.cshtml – Pseudocode
+
+UI layout for the Owner Dashboard
+Displays all users, listings, and orders (buyer, seller, logistic)
+Allows toggling between sections using buttons
+
+Page Layout – Toggle Panels
+
+Top Buttons:
+A group of buttons labeled: 
+	-View Users
+	-View Listings
+	-View Buyer Orders
+	-View Seller Orders
+	-View Logistic Orders
+Each button toggles the visibility of a specific panel
+
+Users Panel: 
+Toggled using "View Users"
+-Displays: 
+	-Table with user ID, name, email, and role
+	-Populated using Model.Users
+
+Listings Panel: 
+Toggled using "View Listings"
+Displays: 
+	- Table of all active listings
+	- Columns include: Listing ID, Seller, Item, Stock, Total Price, Status, Created Date
+	- Data comes from Model.Listings
+
+Buyer Orders Panel: 
+Toggled using "View Buyer Orders"
+Displays: 
+	- Table of all buyer orders
+	- Columns: Order ID, Buyer, Item, Stock, Total Price, Status, Created Date
+	- Fetched from Model.BuyerOrders
+
+Seller Orders Panel: 
+Toggled using "View Seller Orders"
+Displays: 
+	- Table of seller orders linked to buyer orders
+	- Columns: Order ID, Buyer, Item, Stock, Total Price, Status, Created Date
+	- Uses data from Model.SellerOrders
+
+Logistic Orders Panel:  
+Toggled using "View Logistic Orders"
+Displays: 
+ 	- Table of all logistic deliveries
+	- Columns: Order ID, Seller, Item, Stock, Total Price, Status, Created Date
+	- Populated from Model.LogisticOrders
+
+JavaScript Functions: 
+
+togglePanel(panelId):
+ 	- Hides all .panel elements - Shows only the one matching panelId
+
+window.onload: 
+	- Calls togglePanel('buyerOrdersPanel') to set default visible panel on page load
+

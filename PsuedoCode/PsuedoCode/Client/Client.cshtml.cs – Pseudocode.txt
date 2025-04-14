@@ -1,0 +1,88 @@
+Client.cshtml.cs – Pseudocode
+
+PageModel for the Client Page in Razor Pages
+Handles backend logic for loading categories, subcategories, items, and user listings
+Also handles sell form submission and updates item stock based on listings
+
+
+Constructor:
+- Accepts ApplicationDbContext and UserManager<User> as dependencies
+- Initializes:
+    - Categories with one default category object
+    - Subcategories with one default subcategory object
+    - Items as an empty list
+
+
+Properties:
+- Categories: list of all product categories
+- Subcategories: list of subcategories under a selected category
+- Items: list of items under a selected subcategory
+- UserListings: listings created by the currently logged-in user
+- SelectedItemId: bound to item selection input in the form
+- Quantity: bound to quantity input in the form
+
+
+Method: UpdateItemStockAsync
+- Fetch all items from the database
+- For each item:
+    - Calculate total quantity listed across all listings with the same item name
+    - Update the item's Stock value with the total quantity
+    - Mark item as updated
+- Save all updates to the database
+
+
+Method: OnGetAsync (called when the page is loaded)
+- Call UpdateItemStockAsync to make sure stocks are up to date
+- Load all categories and their related subcategories and items
+- If categoryId is provided:
+    - Load subcategories for that category
+- If subcategoryId is provided:
+    - Load items under that subcategory with related category info
+- Get the current user using the UserManager
+- If user exists:
+    - Load listings for that user and store them in UserListings
+- Return the page to the browser
+
+
+Method: OnGetSubcategoriesAsync
+- Accept categoryId
+- Load subcategories where CategoryId matches
+- Return partial view named _SubcategoryPanel with updated subcategory list
+
+
+Method: OnGetItemsAsync
+- Accept subcategoryId
+- Load items where SubcategoryId matches
+- Include the item's subcategory and category information
+- Return partial view named _ItemPanel with updated item list
+
+
+Method: OnPostAsync (handles Sell form submission)
+- If Quantity is less than 1:
+    - Add model error: "Quantity must be at least 1"
+    - Set TempData error message
+    - Redirect back to page
+
+- Retrieve the selected item using SelectedItemId
+- If item not found:
+    - Add model error: "Item not found"
+    - Set TempData error message
+    - Redirect back to page
+
+- Get the currently logged-in user
+- If user is not logged in:
+    - Add model error: "User is not logged in"
+    - Set TempData error message
+    - Redirect back to page
+
+- Check if user already has a listing for the selected item name
+    - If a listing exists:
+        - Add the new quantity to the existing listing
+        - Mark listing as updated
+    - If no listing exists:
+        - Create a new listing with item name, quantity, price, user ID, and current UTC time
+        - Add listing to database
+
+- Save all changes to the database
+- Set TempData success message: "Item added successfully!"
+- Redirect back to page

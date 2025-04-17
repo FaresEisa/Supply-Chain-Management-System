@@ -1,0 +1,42 @@
+LogisticPage.cshtml.cs – PSEUDOCODE
+
+LogisticPageModel class
+Injects ApplicationDbContext
+Defines:
+	-AvailableOrders list
+	-AcceptedOrders list
+
+OnGetAsync()
+	-Validates session:
+	-Checks UserEmail and UserRole == "logistic"
+Gets logged-in user
+Loads orders:
+	-AvailableOrders: where LogisticId == null
+	-AcceptedOrders: where LogisticId == current user.Id
+
+Uses eager loading:
+	-Includes SellerOrder, Listing, Item, User
+
+OnPostAcceptAsync(int orderId)
+	-Validates session
+	-Gets current user
+Finds LogisticOrder:
+	-Matching orderId
+	-LogisticId == null
+	-Assigns current user's ID to the order
+Saves changes
+
+OnPostUpdateStatusAsync(int orderId, string newStatus)
+-Validates session
+-Gets current user
+
+Finds LogisticOrder:
+	-Matching orderId
+	-Assigned to current user
+
+Updates Status across:
+	-LogisticOrder
+	-SellerOrder
+	-BuyerOrder
+	-Direct navigation or fallback query
+Saves changes

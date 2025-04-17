@@ -1,0 +1,31 @@
+LogisticPage.cshtml – PSEUDOCODE
+
+Logistic dashboard for managing delivery orders:
+	-Accept available orders
+	-View accepted orders
+	-Update order status
+
+Page Layout:
+Toggle Buttons
+	-"Available Orders"
+	-"Accepted Orders"
+
+
+Global Search Input:
+	-Used for client-side filtering (implementation removed in this version)
+
+Panel: Available Orders
+	-Lists orders not yet accepted by any logistic user
+	-Columns: Order ID, Seller, Item, Stock, Total Price
+	-Each row includes an Accept button:
+	-Submits form to backend (OnPostAcceptAsync)
+
+Panel: Accepted Orders
+	-Lists orders accepted by the currently logged-in logistic user
+	-Columns: Order ID, Seller, Item, Stock, Total Price, Status, Accepted Date
+
+Status logic:
+	-If Active → Button: "Mark In Transit"
+	-If In Transit → Button: "Mark Delivered"
+	-If Delivered → Display static text
+

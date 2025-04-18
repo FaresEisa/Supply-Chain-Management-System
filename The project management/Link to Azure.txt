@@ -1,0 +1,2 @@
+https://dev.azure.com/MeAndTheOtherGuys/Supply%20Chain%20Management%20System
+(Azure was just used for project management)
